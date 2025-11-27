@@ -17,6 +17,7 @@
             --card-bg: rgba(25, 25, 45, 0.7);
             --success: #4ade80;
             --warning: #fbbf24;
+            --donate-bg: rgba(30, 20, 45, 0.8);
         }
         
         * {
@@ -257,6 +258,21 @@
             box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4);
         }
         
+        .btn-donate {
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            color: #0f0f1b;
+            font-weight: 700;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-donate:hover {
+            box-shadow: 0 10px 25px rgba(255, 204, 0, 0.4);
+            transform: translateY(-3px);
+        }
+        
         /* Section Styling */
         section {
             padding: 100px 0;
@@ -408,6 +424,172 @@
             color: var(--primary);
         }
         
+        /* Donate Section */
+        #donate {
+            background: var(--donate-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #donate::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 204, 0, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(255, 77, 77, 0.15) 0%, transparent 30%);
+            z-index: 0;
+        }
+        
+        .server-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .server-btn {
+            background: rgba(30, 20, 45, 0.8);
+            border: 2px solid transparent;
+            color: var(--gray);
+            padding: 10px 25px;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .server-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .server-btn.active, .server-btn:hover {
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .server-btn.active::before {
+            opacity: 0.2;
+        }
+        
+        .server-btn:hover::before {
+            opacity: 0.15;
+        }
+        
+        .donate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .donate-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 204, 0, 0.2);
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .donate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #ffcc00);
+        }
+        
+        .donate-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 204, 0, 0.5);
+            box-shadow: 0 10px 25px rgba(255, 153, 0, 0.25);
+        }
+        
+        .donate-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+        }
+        
+        .donate-card h3 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .donate-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+        
+        .donate-price {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffcc00;
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+        }
+        
+        .donate-telegram-note {
+            background: rgba(0, 136, 204, 0.15);
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #66ccff;
+            border-left: 2px solid #00aaff;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, var(--primary), #ff1a1a);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(255, 77, 77, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 77, 77, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+        }
+        
         /* Footer */
         footer {
             background: rgba(10, 10, 20, 0.95);
@@ -513,8 +695,13 @@
                 width: 100%;
             }
             
-            .servers-grid {
+            .servers-grid, .donate-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .server-selector {
+                flex-direction: column;
+                align-items: center;
             }
         }
         
@@ -529,6 +716,11 @@
             
             section {
                 padding: 70px 0;
+            }
+            
+            .btn {
+                width: 100%;
+                padding: 12px;
             }
         }
     </style>
@@ -549,6 +741,7 @@
                     <li><a href="#features">Преимущества</a></li>
                     <li><a href="#rules">Правила</a></li>
                     <li><a href="#servers">Сервера</a></li>
+                    <li><a href="#donate">Донат</a></li>
                 </ul>
             </nav>
         </div>
@@ -680,7 +873,7 @@
                         <i class="fas fa-tree"></i>
                     </div>
                     <h3>Ванилла</h3>
-                    <p>Чистый Minecraft без правил с еженедельными вайпами</p>
+                    <p>Чистый Minecraft без правил с еженедельными вайпами каждое воскресенье в 16:00 по мск</p>
                     <div class="server-ip">
                         <div class="ip-address">88.198.230.134:4974</div>
                         <button class="copy-btn" data-ip="88.198.230.134:4974">
@@ -701,13 +894,78 @@
         </div>
     </section>
 
+    <section id="donate">
+        <div class="container">
+            <h2 class="section-title fade-in">Донат</h2>
+            <div class="server-selector">
+                <button class="server-btn active" data-server="kakashkapvp">
+                    <i class="fas fa-crosshairs"></i> KakashkaPVP
+                </button>
+                <button class="server-btn" data-server="vanilla">
+                    <i class="fas fa-tree"></i> Ванилла
+                </button>
+            </div>
+            
+            <div class="donate-content">
+                <div class="donate-grid" id="kakashkapvp-donate">
+                    <div class="donate-card fade-in">
+                        <div class="popular-badge">Популярный</div>
+                        <div class="donate-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>VIP Статус</h3>
+                        <p class="donate-description">Получите уникальный кит с редкими предметами, эксклюзивный тег и приоритет в очереди на сервере</p>
+                        <div class="donate-price">29 ₽</div>
+                        <a href="https://t.me/grolleriew" class="btn btn-donate">
+                            <i class="fab fa-telegram"></i> Купить
+                        </a>
+                        <div class="donate-telegram-note">
+                            <i class="fas fa-info-circle"></i> Покупка осуществляется в лс Telegram
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="donate-grid" id="vanilla-donate" style="display: none;">
+                    <div class="donate-card fade-in">
+                        <div class="donate-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>OP на вайп</h3>
+                        <p class="donate-description">Получите права оператора на время вайпа, учтите что за стоп/рестарт без согласия администрации, приведет к онулированию товара</p>
+                        <div class="donate-price">5 ₽</div>
+                        <a href="https://t.me/grolleriew" class="btn btn-donate">
+                            <i class="fab fa-telegram"></i> Купить
+                        </a>
+                        <div class="donate-telegram-note">
+                            <i class="fas fa-info-circle"></i> Все покупки в лс @grolleriew
+                        </div>
+                    </div>
+                    <div class="donate-card fade-in">
+                        <div class="donate-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3>Любой блок/ресурс</h3>
+                        <p class="donate-description">64 единицы любого блока или ресурса из игры. Укажите что именно вам нужно при покупке</p>
+                        <div class="donate-price">1 ₽</div>
+                        <a href="https://t.me/grolleriew" class="btn btn-donate">
+                            <i class="fab fa-telegram"></i> Купить в Telegram
+                        </a>
+                        <div class="donate-telegram-note">
+                            <i class="fas fa-info-circle"></i> Укажите предмет при обращении
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <a href="https://t.me/kakashkapvp" class="telegram-link">
                 <i class="fab fa-telegram"></i> Официальный Telegram канал
             </a>
             <p class="copyright">
-                &copy; 2025 KakashkaPVP. Все права защищены. Сервер для Minecraft версий 1.21.4-1.21.10
+                &copy; 2025 KakashkaPVP. Все права защищены.
             </p>
         </div>
     </footer>
@@ -763,6 +1021,31 @@
             });
         }
         
+        // Server selection for donate section
+        function setupServerSelection() {
+            const serverButtons = document.querySelectorAll('.server-btn');
+            const kakashkaContent = document.getElementById('kakashkapvp-donate');
+            const vanillaContent = document.getElementById('vanilla-donate');
+            
+            serverButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    serverButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Show appropriate content
+                    const server = button.getAttribute('data-server');
+                    if (server === 'kakashkapvp') {
+                        kakashkaContent.style.display = 'grid';
+                        vanillaContent.style.display = 'none';
+                    } else {
+                        kakashkaContent.style.display = 'none';
+                        vanillaContent.style.display = 'grid';
+                    }
+                });
+            });
+        }
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -790,6 +1073,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             setupCopyButtons();
             setupScrollAnimations();
+            setupServerSelection();
             
             // Initial animation delay for hero
             setTimeout(() => {
