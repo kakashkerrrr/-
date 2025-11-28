@@ -10,14 +10,15 @@
         :root {
             --primary: #ff4d4d;
             --secondary: #6c43ff;
-            --dark: #0f0f1b;
-            --darker: #0a0a14;
+            --dark: #000;
+            --darker: #000;
             --light: #f0f0ff;
             --gray: #a0a0c0;
-            --card-bg: rgba(25, 25, 45, 0.7);
+            --card-bg: rgba(20, 20, 20, 0.85);
             --success: #4ade80;
             --warning: #fbbf24;
-            --donate-bg: rgba(30, 20, 45, 0.8);
+            --donate-bg: rgba(10, 10, 10, 0.9);
+            --warning-bg: rgba(255, 180, 0, 0.15);
         }
         
         * {
@@ -28,7 +29,7 @@
         
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, var(--darker), #1a1a2e);
+            background: linear-gradient(135deg, var(--darker), #0a0a0a);
             color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
@@ -43,8 +44,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(108, 67, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 77, 77, 0.1) 0%, transparent 20%);
+                radial-gradient(circle at 10% 20%, rgba(30, 30, 50, 0.4) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(40, 20, 30, 0.4) 0%, transparent 20%);
             z-index: -1;
         }
         
@@ -57,13 +58,13 @@
         
         /* Header Styles */
         header {
-            background: rgba(15, 15, 27, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
             border-bottom: 1px solid rgba(108, 67, 255, 0.3);
         }
         
@@ -81,7 +82,7 @@
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -158,7 +159,7 @@
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+            text-shadow: 0 5px 15px rgba(255, 77, 77, 0.5);
         }
         
         .hero p {
@@ -174,7 +175,7 @@
             border-radius: 15px;
             padding: 25px;
             border: 1px solid rgba(108, 67, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             margin-top: 30px;
         }
         
@@ -190,11 +191,12 @@
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--light);
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(30, 30, 30, 0.7);
             padding: 8px 15px;
             border-radius: 8px;
             flex-grow: 1;
             text-align: center;
+            border: 1px solid rgba(108, 67, 255, 0.4);
         }
         
         .copy-btn {
@@ -211,11 +213,28 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(255, 77, 77, 0.4);
         }
         
         .copy-btn:hover {
             background: #ff1a1a;
             transform: scale(1.05);
+        }
+        
+        .ip-warning {
+            background: var(--warning-bg);
+            border-left: 3px solid #ffc107;
+            padding: 12px 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            color: #ffcc00;
+        }
+        
+        .ip-warning a {
+            color: #ffc107;
+            text-decoration: underline;
+            font-weight: 500;
         }
         
         .versions {
@@ -241,11 +260,12 @@
             cursor: pointer;
             font-size: 1rem;
             margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
         }
         
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 77, 77, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 77, 77, 0.6);
         }
         
         .btn-telegram {
@@ -255,7 +275,7 @@
         
         .btn-telegram:hover {
             background: #00aaff;
-            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.6);
         }
         
         .btn-donate {
@@ -266,10 +286,11 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
         }
         
         .btn-donate:hover {
-            box-shadow: 0 10px 25px rgba(255, 204, 0, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.6);
             transform: translateY(-3px);
         }
         
@@ -284,6 +305,8 @@
             font-size: 2.8rem;
             margin-bottom: 60px;
             position: relative;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
         
         .section-title::after {
@@ -300,7 +323,7 @@
         
         /* Features Section */
         .features {
-            background: rgba(15, 15, 27, 0.7);
+            background: rgba(5, 5, 5, 0.85);
         }
         
         .features-grid {
@@ -317,18 +340,20 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(108, 67, 255, 0.2);
             backdrop-filter: blur(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
             border-color: rgba(108, 67, 255, 0.5);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
         
         .feature-icon {
             font-size: 3.5rem;
             color: var(--primary);
             margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
         }
         
         .feature-card h3 {
@@ -353,6 +378,7 @@
             gap: 20px;
             transition: all 0.3s ease;
             border-left: 3px solid var(--secondary);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
         }
         
         .rule-item:hover {
@@ -386,9 +412,11 @@
             border-radius: 15px;
             padding: 30px;
             border: 1px solid rgba(108, 67, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             text-align: center;
             transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .server-card:hover {
@@ -424,11 +452,23 @@
             color: var(--primary);
         }
         
+        .ip-warning-card {
+            background: var(--warning-bg);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #ffcc00;
+            border: 1px solid #ffc107;
+        }
+        
         /* Donate Section */
         #donate {
             background: var(--donate-bg);
             position: relative;
             overflow: hidden;
+            border-top: 1px solid rgba(255, 204, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 204, 0, 0.2);
         }
         
         #donate::before {
@@ -439,8 +479,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 204, 0, 0.1) 0%, transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(255, 77, 77, 0.15) 0%, transparent 30%);
+                radial-gradient(circle at 20% 30%, rgba(40, 30, 0, 0.3) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(30, 10, 10, 0.3) 0%, transparent 30%);
             z-index: 0;
         }
         
@@ -453,7 +493,7 @@
         }
         
         .server-btn {
-            background: rgba(30, 20, 45, 0.8);
+            background: rgba(20, 20, 20, 0.8);
             border: 2px solid transparent;
             color: var(--gray);
             padding: 10px 25px;
@@ -511,6 +551,7 @@
             backdrop-filter: blur(5px);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
         
         .donate-card::before {
@@ -526,14 +567,14 @@
         .donate-card:hover {
             transform: translateY(-8px);
             border-color: rgba(255, 204, 0, 0.5);
-            box-shadow: 0 10px 25px rgba(255, 153, 0, 0.25);
+            box-shadow: 0 10px 25px rgba(255, 153, 0, 0.3);
         }
         
         .donate-icon {
             font-size: 3rem;
             margin-bottom: 20px;
             color: #ffcc00;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
         }
         
         .donate-card h3 {
@@ -555,7 +596,7 @@
             font-weight: 700;
             color: #ffcc00;
             margin: 15px 0;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
         }
         
         .donate-telegram-note {
@@ -580,7 +621,7 @@
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 3px 10px rgba(255, 77, 77, 0.4);
+            box-shadow: 0 3px 10px rgba(255, 77, 77, 0.6);
             animation: pulse 2s infinite;
         }
         
@@ -592,10 +633,10 @@
         
         /* Footer */
         footer {
-            background: rgba(10, 10, 20, 0.95);
+            background: rgba(0, 0, 0, 0.97);
             padding: 50px 0 20px;
             text-align: center;
-            border-top: 1px solid rgba(108, 67, 255, 0.3);
+            border-top: 1px solid rgba(108, 67, 255, 0.4);
         }
         
         .telegram-link {
@@ -611,18 +652,20 @@
             background: #0088cc;
             border-radius: 50px;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
         }
         
         .telegram-link:hover {
             background: #00aaff;
             transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.6);
         }
         
         .copyright {
             color: var(--gray);
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid rgba(108, 67, 255, 0.2);
+            border-top: 1px solid rgba(108, 67, 255, 0.3);
         }
         
         /* Animations */
@@ -663,12 +706,13 @@
                 top: 80px;
                 left: -100%;
                 flex-direction: column;
-                background: rgba(15, 15, 27, 0.95);
+                background: rgba(0, 0, 0, 0.97);
                 width: 100%;
                 text-align: center;
                 padding: 30px 0;
                 transition: left 0.3s ease;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(10px);
             }
             
             .nav-links.active {
@@ -721,6 +765,12 @@
             .btn {
                 width: 100%;
                 padding: 12px;
+                font-size: 0.95rem;
+            }
+            
+            .ip-warning, .ip-warning-card {
+                font-size: 0.9rem;
+                padding: 10px;
             }
         }
     </style>
@@ -751,14 +801,17 @@
         <div class="container">
             <div class="hero-content fade-in">
                 <h1>Открыт новый сервер! Чистая ванилла без правил!</h1>
-                <p>Присоединяйся к KakashkaPVP - где твое мнение имеет значение, хорошая модерация и самое главное простота - именно этого обычно не хватает на других серверах. </p>
+                <p>Присоединяйся к KakashkaPVP - где твое мнение имеет значение, хорошая модерация и самое главное простота - именно этого обычно не хватает на других серверах.</p>
                 
                 <div class="server-info">
                     <div class="server-ip">
-                        <div class="ip-address">109.122.198.82:26943</div>
+                        <div class="ip-address">-</div>
                         <button class="copy-btn" data-ip="109.122.198.82:26943">
                             <i class="fas fa-copy"></i>
                         </button>
+                    </div>
+                    <div class="ip-warning">
+                        <i class="fas fa-exclamation-triangle"></i> IP-адрес временно динамический. Текущий статус сервера можно посмотреть в <a href="https://t.me/kakashkapvp/12" target="_blank">Telegram посте</a>
                     </div>
                     <div class="versions">
                         Поддерживаемые версии: 1.21.4 - 1.21.10
@@ -858,10 +911,13 @@
                     <h3>KakashkaPVP</h3>
                     <p>Основной PvP сервер с уникальными режимами и кастомными предметами</p>
                     <div class="server-ip">
-                        <div class="ip-address">109.122.198.82:26943</div>
+                        <div class="ip-address">-</div>
                         <button class="copy-btn" data-ip="109.122.198.82:26943">
                             <i class="fas fa-copy"></i>
                         </button>
+                    </div>
+                    <div class="ip-warning-card">
+                        <i class="fas fa-exclamation-triangle"></i> IP временно динамический. Статус сервера: <a href="https://t.me/kakashkapvp/12" target="_blank">проверить в Telegram</a>
                     </div>
                     <div class="versions">
                         Версии: 1.21.4 - 1.21.10
@@ -992,11 +1048,15 @@
                         const originalIcon = button.innerHTML;
                         button.innerHTML = '<i class="fas fa-check"></i>';
                         button.style.background = 'var(--success)';
+                        button.style.boxShadow = '0 0 10px rgba(74, 222, 128, 0.6)';
                         
                         setTimeout(() => {
                             button.innerHTML = originalIcon;
                             button.style.background = '';
+                            button.style.boxShadow = '';
                         }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy IP: ', err);
                     });
                 });
             });
@@ -1067,6 +1127,12 @@
                     }
                 }
             });
+        });
+        
+        // Handle Telegram links to open in new tab
+        document.querySelectorAll('a[href^="https://t.me/"]').forEach(link => {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
         });
         
         // Initialize everything when DOM is loaded
