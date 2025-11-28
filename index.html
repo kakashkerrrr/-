@@ -360,6 +360,10 @@
         .notification.show {
             transform: translateX(0);
         }
+        
+        .notification.error {
+            background: #ff4444;
+        }
     </style>
 </head>
 <body>
@@ -369,7 +373,7 @@
             <div class="subtitle">Официальные сервера Minecraft</div>
         </header>
         
-        <div class="notification" id="notification">IP скопирован в буфер обмена!</div>
+        <div class="notification" id="notification"></div>
         
         <div class="servers-grid">
             <div class="server-card">
@@ -547,16 +551,55 @@
             copyButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const ip = this.getAttribute('data-ip');
-                    navigator.clipboard.writeText(ip).then(() => {
-                        showNotification();
-                    }).catch(err => {
-                        console.error('Ошибка копирования: ', err);
+                    copyToClipboard(ip).then(success => {
+                        if (success) {
+                            showNotification('IP скопирован в буфер обмена!', 'success');
+                        } else {
+                            showNotification('Ошибка копирования. Попробуйте вручную.', 'error');
+                        }
                     });
                 });
             });
             
-            function showNotification() {
+            function copyToClipboard(text) {
+                return new Promise((resolve) => {
+                    // Создаем скрытое textarea для копирования
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    textarea.style.top = '0';
+                    textarea.style.left = '0';
+                    textarea.style.width = '2px';
+                    textarea.style.height = '2px';
+                    textarea.style.padding = '0';
+                    textarea.style.border = 'none';
+                    textarea.style.outline = 'none';
+                    textarea.style.boxShadow = 'none';
+                    textarea.style.background = 'transparent';
+                    
+                    document.body.appendChild(textarea);
+                    textarea.focus();
+                    textarea.select();
+                    
+                    try {
+                        const successful = document.execCommand('copy');
+                        document.body.removeChild(textarea);
+                        resolve(successful);
+                    } catch (err) {
+                        document.body.removeChild(textarea);
+                        resolve(false);
+                    }
+                });
+            }
+            
+            function showNotification(message, type = 'success') {
+                notification.textContent = message;
+                notification.className = 'notification';
                 notification.classList.add('show');
+                if (type === 'error') {
+                    notification.classList.add('error');
+                }
+                
                 setTimeout(() => {
                     notification.classList.remove('show');
                 }, 3000);
